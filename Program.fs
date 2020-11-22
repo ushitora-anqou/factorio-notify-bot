@@ -49,14 +49,14 @@ let main argv =
             let! line = Async.AwaitTask <| reader.ReadLineAsync()
 
             if line = null then
-                do! Async.Sleep 1000
-                return! loop ()
+                //do! async { return () }
+                do! Async.Sleep(1000)
+            else
+                let m = regex.Match line
 
-            let m = regex.Match line
-            if not m.Success then return! loop ()
-
-            printfn "%s" line
-            sendMessage line |> Async.Ignore |> Async.Start
+                if m.Success then
+                    printfn "%s" line
+                    sendMessage line |> Async.Ignore |> Async.Start
 
             return! loop ()
         }
