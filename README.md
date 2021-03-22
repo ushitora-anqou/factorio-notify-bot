@@ -1,5 +1,6 @@
 # factorio-notify-bot
 
 ```sh
-$ DISCORD_WEBHOOK_URL="..." factorio-notify-bot log-file-path
+$ factorio --start-server ... --console-log LOG-FILE-PATH
+$ DISCORD_WEBHOOK_URL="..." factorio-notify-bot LOG-FILE-PATH
 ```
